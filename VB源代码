@@ -1,0 +1,19 @@
+Sub OnSlideShowPageChange(ByVal objWindow As SlideShowWindow)
+    'Author: HZAU GuoLab-LHT 2023/3/21
+    Dim s As Slide
+    Dim shp As Shape
+    For Each s In ActivePresentation.Slides
+        If s.SlideIndex <> 1 Then 'check if slide is not first slide or has a specific title
+            s.HeadersFooters.SlideNumber.Visible = msoTrue 'show slide number only if not first slide or has a specific title
+            For Each shp In s.Shapes
+                If Left(shp.Name, 12) = "Slide Number" Then
+                    shp.TextFrame.TextRange.Text = CStr(s.SlideIndex) & " / " & CStr(ActivePresentation.Slides.Count)
+                    shp.TextFrame.TextRange.Characters(Start:=Len(CStr(s.SlideIndex)) + 4, Length:=Len(CStr(ActivePresentation.Slides.Count))).Font.Color.RGB = RGB(128, 128, 128)
+                    shp.TextFrame.TextRange.Characters(Start:=Len(CStr(s.SlideIndex)) + 4, Length:=Len(CStr(ActivePresentation.Slides.Count))).Font.Bold = msoFalse
+                    shp.Left = s.CustomLayout.Width - shp.Width - 10 '10 is a margin value, you can adjust it as you like
+                    shp.Top = s.CustomLayout.Height - shp.Height - 10 '10 is a margin value, you can adjust it as you like
+                End If
+            Next shp
+        End If
+    Next s
+End Sub
