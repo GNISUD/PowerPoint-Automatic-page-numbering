@@ -1,5 +1,5 @@
 # PowerPoint-Automatic-page-numbering
-一个小加载项，只用加载一次，在每次打开PPT点击放映时自动在幻灯片右下角加上 页码/总页数
+一个小的Poweroint加载项，只需加载一次，在每次打开PPT点击放映时自动在幻灯片右下角加上 页码/总页数
 
 # 用法
 1. 在PowerPoint中，依次单击 文件➡选项，在弹出的“PowerPoint 选项”中单击🔰加载项。
